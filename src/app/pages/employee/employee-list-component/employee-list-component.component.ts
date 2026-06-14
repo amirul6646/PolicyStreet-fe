@@ -139,7 +139,6 @@ export class EmployeeListComponentComponent {
       if (result.isConfirmed) {
         this.employeeService.deleteEmployee(employeeId).subscribe({
           next: (result) => {
-            console.log('SUCCESS HIT', result);
             setTimeout(() => {
               Swal.fire({
                 text: result.message,
@@ -150,7 +149,6 @@ export class EmployeeListComponentComponent {
             }, 200);
           },
           error: (err) => {
-            console.log('DELETE ERROR:', err);
 
             setTimeout(() => {
               Swal.fire({
