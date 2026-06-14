@@ -35,7 +35,6 @@ export class EmployeeListComponentComponent {
   ) {}
 
   ngOnInit() {
-    console.log('');
     this.getEmployeeList();
     this.getDepartmentList();
     this.getPositionList();
