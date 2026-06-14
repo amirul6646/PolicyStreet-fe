@@ -148,8 +148,7 @@ export class EmployeeListComponentComponent {
               });
             }, 200);
           },
-          error: (err) => {
-
+         error: (err) => {
             setTimeout(() => {
               Swal.fire({
                 text: err.error.message,
