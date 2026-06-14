@@ -1,0 +1,135 @@
+<!-- Begin Page Content -->
+<div class="container-fluid mt-4">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">List of Employee</h6>
+    </div>
+
+    <div class="card-body">
+      <div class="row mb-2 align-items-center">
+        <label class="col-sm-2 col-form-label">Name</label>
+
+        <div class="col-sm-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="searchField.fullName"
+            placeholder="Name"
+          />
+        </div>
+        <label class="col-sm-2 col-form-label">Employee Code</label>
+
+        <div class="col-sm-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="searchField.employeeCode"
+            placeholder="Employee Code"
+          />
+        </div>
+      </div>
+      <div class="row mb-2 align-items-center">
+        <label class="col-sm-2 col-form-label">Department</label>
+
+        <div class="col-sm-3">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            [(ngModel)]="searchField.departmentId"
+          >
+            <option selected [value]="0">All</option>
+            <option
+              [value]="department.departmentId"
+              *ngFor="let department of departmentList"
+            >
+              {{ department.departmentCode }} - {{ department.departmentName }}
+            </option>
+          </select>
+        </div>
+        <label class="col-sm-2 col-form-label">Position</label>
+
+        <div class="col-sm-3">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            [(ngModel)]="searchField.positionId"
+          >
+            <option selected [value]="0">All</option>
+            <option
+              [value]="position.positionId"
+              *ngFor="let position of positionList"
+            >
+              {{ position.positionCode }} - {{ position.positionName }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <button
+            type="button"
+            class="btn me-1 btn-secondary"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+          <button type="button" class="btn btn-primary" (click)="search()">
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div class="align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-600"></h1>
+        <button class="btn btn-primary" (click)="addUpdateMember('A',0)">
+          Add Employee
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Code</th>
+              <th>Email</th>
+              <th>Position</th>
+              <th>Department</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              *ngFor="
+                let employee of employees
+                  | paginate: { itemsPerPage: 10, currentPage: page }
+              "
+            >
+              <td>{{ employee.fullName }}</td>
+              <td>{{ employee.employeeCode }}</td>
+              <td>{{ employee.email }}</td>
+              <td>{{ employee.positionName }}</td>
+              <td>{{ employee.departmentName }}</td>
+              <td>
+                <a href="#" class="btn me-1 btn-primary btn-circle btn-sm" (click)="addUpdateMember('E',  employee.employeeId)">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-circle btn-sm" (click)="deleteEmployee(employee.employeeId)">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
