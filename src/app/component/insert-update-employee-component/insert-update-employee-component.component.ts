@@ -99,13 +99,12 @@ export class InsertUpdateEmployeeComponentComponent {
       next: (res) => {
         this.employeeInfo = res.result;
         this.handlePatch();
-
       },
       error: (error) => {},
     });
   }
 
-  handlePatch(){
+  handlePatch() {
     this.employeeForm.patchValue({
       fullName: this.employeeInfo.fullName,
       employeeCode: this.employeeInfo.employeeCode,
@@ -117,15 +116,15 @@ export class InsertUpdateEmployeeComponentComponent {
       positionId: this.employeeInfo.positionId,
       salary: this.employeeInfo.salary,
       hireDate: this.formatDate(this.employeeInfo.hireDate),
-    })
+    });
   }
 
   formatDate(date: any): string {
-  if (!date) return '';
+    if (!date) return '';
 
-  const d = new Date(date);
-  return d.toISOString().split('T')[0]; // YYYY-MM-DD
-}
+    const d = new Date(date);
+    return d.toISOString().split('T')[0]; // YYYY-MM-DD
+  }
 
   get f() {
     return this.employeeForm.controls;
@@ -234,7 +233,7 @@ export class InsertUpdateEmployeeComponentComponent {
       departmentId: formValue.departmentId,
       positionId: formValue.positionId,
       salary: formValue.salary,
-      hireDate: formValue.hireDate
+      hireDate: formValue.hireDate,
     };
 
     Swal.fire({
@@ -249,30 +248,39 @@ export class InsertUpdateEmployeeComponentComponent {
         return;
       }
       if (result.isConfirmed) {
-        this.employeeService.updateEmployee(this.employeeInfo.employeeId,data).subscribe({
-          next: (result) => {
-            console.log('SUCCESS HIT', result);
-            setTimeout(() => {
-              Swal.fire({
-                text: result.message,
-                icon: 'success',
-              }).then(() => {
-                this.activeModal.close();
-              });
-            }, 200);
-          },
-          error: (err) => {
-            console.log('DELETE ERROR:', err);
+        this.employeeService
+          .updateEmployee(this.employeeInfo.employeeId, data)
+          .subscribe({
+            next: (result) => {
+              console.log('SUCCESS HIT', result);
+              setTimeout(() => {
+                Swal.fire({
+                  text: result.message,
+                  icon: 'success',
+                }).then(() => {
+                  this.activeModal.close();
+                });
+              }, 200);
+            },
+            error: (err) => {
+              console.log('DELETE ERROR:', err);
 
-            setTimeout(() => {
-              Swal.fire({
-                text: err.error.message,
-                icon: 'error',
-              }).then(() => {});
-            }, 200);
-          },
-        });
+              setTimeout(() => {
+                Swal.fire({
+                  text: err.error.message,
+                  icon: 'error',
+                }).then(() => {});
+              }, 200);
+            },
+          });
       }
     });
+  }
+
+  decimalInputOnChange2(e: any, formControl: any) {
+    const value = e.target.value.replaceAll(',', '');
+    const decimalValue = parseFloat(value);
+
+    formControl?.setValue(decimalValue);
   }
 }

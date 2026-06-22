@@ -46,14 +46,14 @@
           formControlName="employeeCode"
           id="exampleFormControlInput1"
           placeholder="employeeCode"
-           [ngClass]="{
+          [ngClass]="{
             'is-valid': f['employeeCode'].valid,
             'is-invalid':
               f['employeeCode'].invalid &&
               (f['employeeCode'].dirty || f['employeeCode'].touched),
           }"
         />
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.employeeCode"
         >
@@ -66,17 +66,21 @@
     <div class="row">
       <div class="col-6 mb-3">
         <label for="exampleFormControlInput1" class="form-label">Gender</label>
-        <select class="form-select" aria-label="Default select example" formControlName="gender"  [ngClass]="{
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="gender"
+          [ngClass]="{
             'is-valid': f['gender'].valid,
             'is-invalid':
-              f['gender'].invalid &&
-              (f['gender'].dirty || f['gender'].touched),
-          }">
+              f['gender'].invalid && (f['gender'].dirty || f['gender'].touched),
+          }"
+        >
           <option value="">Please choose</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.gender"
         >
@@ -86,17 +90,22 @@
         </div>
       </div>
       <div class="col-4 mb-3">
-        <label for="exampleFormControlInput1" class="form-label" 
-          
+        <label for="exampleFormControlInput1" class="form-label"
           >Date of Birth</label
         >
-        <input type="date" class="form-control" id="exampleFormControlInput1"  formControlName="dateOfBirth"   [ngClass]="{
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput1"
+          formControlName="dateOfBirth"
+          [ngClass]="{
             'is-valid': f['dateOfBirth'].valid,
             'is-invalid':
               f['dateOfBirth'].invalid &&
               (f['dateOfBirth'].dirty || f['dateOfBirth'].touched),
-          }" />
-           <div
+          }"
+        />
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.dateOfBirth"
         >
@@ -108,21 +117,20 @@
     </div>
     <div class="row">
       <div class="col-6 mb-3">
-        <label for="exampleFormControlInput1" class="form-label"  >Email</label>
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
         <input
           type="email"
           class="form-control"
-          formControlName="email" 
+          formControlName="email"
           id="exampleFormControlInput1"
           placeholder="Email"
-           [ngClass]="{
+          [ngClass]="{
             'is-valid': f['email'].valid,
             'is-invalid':
-              f['email'].invalid &&
-              (f['email'].dirty || f['email'].touched),
+              f['email'].invalid && (f['email'].dirty || f['email'].touched),
           }"
         />
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.email"
         >
@@ -132,23 +140,23 @@
         </div>
       </div>
       <div class="col-4 mb-3">
-        <label for="exampleFormControlInput1" class="form-label"  
+        <label for="exampleFormControlInput1" class="form-label"
           >Phone Number</label
         >
         <input
           type="text"
-          formControlName="phoneNumber" 
+          formControlName="phoneNumber"
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="Phone Number"
-           [ngClass]="{
+          [ngClass]="{
             'is-valid': f['phoneNumber'].valid,
             'is-invalid':
               f['phoneNumber'].invalid &&
               (f['phoneNumber'].dirty || f['phoneNumber'].touched),
           }"
         />
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.phoneNumber"
         >
@@ -161,15 +169,20 @@
 
     <div class="row">
       <div class="col-6 mb-3">
-        <label for="exampleFormControlInput1" class="form-label"   
+        <label for="exampleFormControlInput1" class="form-label"
           >Department</label
         >
-        <select class="form-select" aria-label="Default select example" formControlName="departmentId"  [ngClass]="{
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="departmentId"
+          [ngClass]="{
             'is-valid': f['departmentId'].valid,
             'is-invalid':
               f['departmentId'].invalid &&
               (f['departmentId'].dirty || f['departmentId'].touched),
-          }">
+          }"
+        >
           <option value="">Please choose</option>
           <option
             [value]="department.departmentId"
@@ -178,7 +191,7 @@
             {{ department.departmentCode }} - {{ department.departmentName }}
           </option>
         </select>
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.departmentId"
         >
@@ -188,15 +201,20 @@
         </div>
       </div>
       <div class="col-4 mb-3">
-        <label for="exampleFormControlInput1" class="form-label"  
+        <label for="exampleFormControlInput1" class="form-label"
           >Position</label
         >
-        <select class="form-select" aria-label="Default select example" formControlName="positionId"  [ngClass]="{
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="positionId"
+          [ngClass]="{
             'is-valid': f['positionId'].valid,
             'is-invalid':
               f['positionId'].invalid &&
               (f['positionId'].dirty || f['positionId'].touched),
-          }">
+          }"
+        >
           <option value="">Please choose</option>
           <option
             [value]="position.positionId"
@@ -205,7 +223,7 @@
             {{ position.positionCode }} - {{ position.positionName }}
           </option>
         </select>
-         <div
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.positionId"
         >
@@ -218,20 +236,32 @@
 
     <div class="row">
       <div class="col-6 mb-3">
-        <label for="exampleFormControlInput1" class="form-label"  >Salary</label>
-        <input
-          type="number"
+        <label for="exampleFormControlInput1" class="form-label">Salary</label>
+        <!-- <input
+          type="text"
           class="form-control"
           formControlName="salary"
           id="exampleFormControlInput1"
-           [ngClass]="{
+          (blur)="formatSalary()"
+          (focus)="unformatSalary()"
+          [ngClass]="{
             'is-valid': f['salary'].valid,
             'is-invalid':
-              f['salary'].invalid &&
-              (f['salary'].dirty || f['salary'].touched),
+              f['salary'].invalid && (f['salary'].dirty || f['salary'].touched),
+          }"
+        /> -->
+        <input
+          class="form-control"
+          [value]="employeeForm.get('salary')?.value | number: '1.2-2'"
+          (change)="decimalInputOnChange2($event, employeeForm.get('salary'))"
+          [ngClass]="{
+            'is-valid': f['salary'].valid,
+            'is-invalid':
+              f['salary'].invalid && (f['salary'].dirty || f['salary'].touched),
           }"
         />
-         <div
+
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.salary"
         >
@@ -241,16 +271,22 @@
         </div>
       </div>
       <div class="col-4 mb-3">
-        <label for="exampleFormControlInput1" class="form-label" 
+        <label for="exampleFormControlInput1" class="form-label"
           >Hiring Date</label
         >
-        <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="hireDate"  [ngClass]="{
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput1"
+          formControlName="hireDate"
+          [ngClass]="{
             'is-valid': f['hireDate'].valid,
             'is-invalid':
               f['hireDate'].invalid &&
               (f['hireDate'].dirty || f['hireDate'].touched),
-          }"/>
-           <div
+          }"
+        />
+        <div
           class="invalid-feedback"
           *ngFor="let validation of validation_messages.hireDate"
         >
@@ -266,10 +302,20 @@
         <i class="fa-solid fa-xmark"></i>
         Close
       </button>
-      <button *ngIf="mode === 'A'" type="submit" (click)="addEmployee()" class="btn btn-primary btn-min-100px">
+      <button
+        *ngIf="mode === 'A'"
+        type="submit"
+        (click)="addEmployee()"
+        class="btn btn-primary btn-min-100px"
+      >
         Add
       </button>
-      <button *ngIf="mode === 'E'" type="submit" (click)="updateEmployee()" class="btn btn-primary btn-min-100px">
+      <button
+        *ngIf="mode === 'E'"
+        type="submit"
+        (click)="updateEmployee()"
+        class="btn btn-primary btn-min-100px"
+      >
         Update
       </button>
     </div>
